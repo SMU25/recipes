@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useRoutes } from "react-router-dom";
-import { Home, Meal, NotFound } from "src/pages";
+import { Home, Meal, Favorites, NotFound } from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
 
 const ROUTES = [
@@ -11,6 +11,10 @@ const ROUTES = [
   {
     element: <Meal />,
     path: PATHNAMES.MEAL,
+  },
+  {
+    element: <Favorites />,
+    path: PATHNAMES.FAVORITES,
   },
   {
     element: <NotFound />,

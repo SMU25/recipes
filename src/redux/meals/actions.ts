@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "src/services/api-client";
+import { history } from "src/services/history";
 import { NotificationService } from "src/helpers/notifications";
+import { PATHNAMES } from "src/constants/routes";
 import { IMealsResponse } from "src/@types/meals";
 
 export const MEALS_SLICE_NAME = "meals";
@@ -33,8 +35,12 @@ export const getMealByIdAsync = createAsyncThunk(
   async (id: string, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IMealsResponse>(
-        `/lookup.php?i=52772${id}`
+        `/lookup.php?i=${id}`
       );
+
+      if (!data.meals?.length) {
+        history.replace(PATHNAMES.NOT_FOUND);
+      }
 
       return data.meals[0];
     } catch ({ response }) {

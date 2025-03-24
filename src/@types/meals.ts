@@ -54,11 +54,16 @@ export interface IMeal {
   dateModified: string | null;
 }
 
-export type IMealCard = Pick<
-  IMeal,
-  "idMeal" | "strMeal" | "strCategory" | "strArea" | "strMealThumb"
->;
+// export type IMealCard = Pick<
+//   IMeal,
+//   "idMeal" | "strMeal" | "strCategory" | "strArea" | "strMealThumb"
+// >;
 
 export interface IMealsResponse {
   meals: IMeal[];
+}
+
+export interface IIngredient {
+  name: string;
+  measure: string;
 }

@@ -1,22 +1,43 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import {
+  addMealToFavorites,
+  removeMealFromFavorites,
+} from "src/redux/favorites/actions";
+import { selectAllFavoriteMeals } from "src/redux/favorites/selectors";
 import { getImageBySize } from "src/utils/getImageBySize";
 import { getItemPath } from "src/utils/getItemPath";
 import { PATHNAMES } from "src/constants/routes";
-import { IMealCard } from "src/@types/meals";
+import { IMeal } from "src/@types/meals";
 import { Button } from "../Button";
 import { ButtonVariants } from "../Button/types";
 
-export const MealCard: FC<IMealCard> = ({
-  idMeal,
-  strMeal,
-  strCategory,
-  strArea,
-  strMealThumb,
-}) => {
+export const MealCard: FC<IMeal> = (props) => {
+  const { idMeal, strMeal, strCategory, strArea, strMealThumb } = props;
+
+  const dispatch = useAppDispatch();
+
   const path = getItemPath(PATHNAMES.MEAL, {
-    meal: idMeal,
+    id: idMeal,
   });
+
+  const favorites = useAppSelector(selectAllFavoriteMeals);
+
+  const isFavorite = favorites.some(
+    (favoriteItem) => favoriteItem.idMeal === idMeal
+  );
+
+  const addToFavorites = () => dispatch(addMealToFavorites(props));
+  const removeFromFavorites = () => dispatch(removeMealFromFavorites(idMeal));
+
+  const toggleIsFavorite = () => {
+    if (isFavorite) {
+      removeFromFavorites();
+    } else {
+      addToFavorites();
+    }
+  };
 
   return (
     <div className="rounded-lg shadow-dark-card">
@@ -52,10 +73,12 @@ export const MealCard: FC<IMealCard> = ({
           </Link>
 
           <Button
-            className="gap-1 w-full mt-4 py-1 !px-5 !font-medium"
+            className="gap-2 w-full mt-4 py-1 !px-5 !font-medium"
             variant={ButtonVariants.PRIMARY}
+            onClick={toggleIsFavorite}
           >
-            <span className="text-4xl leading-3">+</span> Add
+            {!isFavorite && <span className="text-4xl leading-3">+</span>}
+            {isFavorite ? "Remove" : "Add"}
           </Button>
         </div>
       </div>
