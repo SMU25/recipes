@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+button,
+input {
+  outline: none;
+}
+
+a,
+button,
+button span,
+svg path {
+  @apply transition-all duration-200;
+}
+
+.container {
+  @apply w-full box-border mx-auto overflow-hidden;
+}
