@@ -33,12 +33,12 @@ export const Meals: FC = () => {
     ? data?.length && data.filter((meal) => meal.strCategory === activeCategory)
     : data;
 
-  const paginatedData =
-    filteredDataByCategory?.length &&
-    filteredDataByCategory.slice(
-      (page - 1) * ITEMS_PER_PAGE,
-      page * ITEMS_PER_PAGE
-    );
+  const paginatedData = filteredDataByCategory?.length
+    ? filteredDataByCategory.slice(
+        (page - 1) * ITEMS_PER_PAGE,
+        page * ITEMS_PER_PAGE
+      )
+    : [];
 
   const totalPages = Math.ceil(
     (filteredDataByCategory?.length || 0) / ITEMS_PER_PAGE
