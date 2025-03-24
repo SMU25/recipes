@@ -37,7 +37,7 @@ export const Categories: FC = () => {
 
         {(categories === undefined ||
           (Array.isArray(categories) && categories?.length === 0)) && (
-          <ErrorMessage>Meals not found!</ErrorMessage>
+          <ErrorMessage>Categories not found!</ErrorMessage>
         )}
       </div>
     </section>

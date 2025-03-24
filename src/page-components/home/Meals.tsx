@@ -66,10 +66,11 @@ export const Meals: FC = () => {
           )
         )}
 
-        {(data === undefined ||
-          (Array.isArray(paginatedData) && paginatedData?.length === 0)) && (
-          <ErrorMessage>Meals not found!</ErrorMessage>
-        )}
+        {!isLoading &&
+          (data === undefined ||
+            (Array.isArray(paginatedData) && paginatedData?.length === 0)) && (
+            <ErrorMessage>Meals not found!</ErrorMessage>
+          )}
 
         <Pagination
           className="justify-center mt-10"
