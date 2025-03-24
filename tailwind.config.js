@@ -3,20 +3,12 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      colors: {},
-      fontSize: {},
-      lineHeight: {},
       spacing: {
-        15: "60px",
+        360: "1440px",
       },
-      screens: {
-        default: "0px",
-        xs: "450px",
-        sm: "720px",
-        md: "900px",
-        lg: "1076px",
-        gl: "1300px",
-        xl: "1614px",
+      boxShadow: {
+        "dark-card":
+          "0px 4px 6px -2px rgba(0, 0, 0, 0.2), 0px 12px 16px -4px rgba(0, 0, 0, 0.15);",
       },
     },
   },

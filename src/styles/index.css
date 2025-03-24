@@ -3,12 +3,7 @@
 @tailwind utilities;
 
 * {
-  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "Raleway", sans-serif;
 }
 
 button,
@@ -24,5 +19,5 @@ svg path {
 }
 
 .container {
-  @apply w-full box-border mx-auto overflow-hidden;
+  @apply max-w-360 w-full box-border mx-auto;
 }

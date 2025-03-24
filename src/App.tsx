@@ -11,7 +11,7 @@ function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>
       <ReduxProvider store={store}>
-        <div className="App flex flex-col h-screen overflow-y-auto overflow-x-hidden">
+        <div className="App flex flex-col h-screen overflow-scroll">
           <AppRoutes />
           <ToastContainer
             position="bottom-right"

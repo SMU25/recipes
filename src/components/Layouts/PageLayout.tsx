@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
-// import { Header } from "../Header";
-// import { Footer } from "../Footer";
+import { Header } from "../Header";
 
 interface Props {
   children: ReactNode;
@@ -11,16 +10,22 @@ interface Props {
   isShownFooter?: boolean;
 }
 
-export const PageWrapper: FC<Props> = ({
+export const PageLayout: FC<Props> = ({
   children,
   className,
   mainClassName,
-  isShownHeader,
-  isShownFooter,
+  isShownHeader = true,
 }) => (
   <div className={cn("flex flex-col h-screen", className)}>
-    {/* <Header isShown={isShownHeader} /> */}
-    <main className={cn("flex-1", mainClassName)}>{children}</main>
-    {/* <Footer isShown={isShownFooter} /> */}
+    {isShownHeader && <Header />}
+
+    <main
+      className={cn(
+        "flex-1 bg-gradient-to-t from-cyan-100/50 to-gray-200/50",
+        mainClassName
+      )}
+    >
+      {children}
+    </main>
   </div>
 );
